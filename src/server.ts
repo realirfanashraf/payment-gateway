@@ -2,7 +2,8 @@ import express, { Request, Response } from 'express';
 import dotenv from 'dotenv'
 import connectDB from './config/database.js';
 import setupSwaggerDocs from './swagger.js';
-import routes from './routes/payments.js';
+import authRoutes from './routes/auth.js'
+import paymentRoutes from './routes/payments.js';
 
 
 dotenv.config();
@@ -11,8 +12,8 @@ const port = process.env.PORT || 3000;
 
 connectDB()
 setupSwaggerDocs(app);
-
-app.use('/', routes);
+app.use('/', authRoutes)
+app.use('/user', paymentRoutes);
 
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
