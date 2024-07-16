@@ -1,8 +1,8 @@
 import express, { Request, Response } from 'express';
 import dotenv from 'dotenv'
-import connectDB from './utils/database.js';
+import connectDB from './config/database.js';
 import setupSwaggerDocs from './swagger.js';
-import routes from './routes/paymentRoute.js';
+import routes from './routes/payments.js';
 
 
 dotenv.config();
